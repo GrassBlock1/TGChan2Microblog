@@ -1,6 +1,18 @@
 ---
 import Layout from '../../layouts/base.astro'
 import Fuse from 'fuse.js'
+import { getChannelInfo } from '../../lib/telegram'
+import Item from '../../components/item.astro'
+
+const channel = await getChannelInfo(Astro, {
+  q: Astro.url.searchParams.get('q') || Astro.params.q,
+})
+
+const posts = channel.posts ?? []
+const { SITE_URL } = Astro.locals
+const { before = true, after = true } = Astro.props
+const beforeCursor = posts[posts.length - 1]?.id
+const afterCursor = posts[0]?.id
 
 let q = Astro.url.searchParams.get('q') || ''
 
@@ -28,12 +40,49 @@ export const prerender = false
         searchResults.length > 0 ? (
           searchResults.map((result) => (
             <li>
-              <a href={`${result.item.slug}`}>{result.item.title}</a>
-              <br />
+              <a href={`${result.item.slug}`}>
+                #{result.item.id}:{result.item.title}
+              </a>
             </li>
           ))
         ) : (
-          <p>No results found.</p>
+          <>
+            <p>
+              No results from fuse.js. Results below came from the official
+              search api and may less accurate.
+            </p>
+            <div class="items">
+              {posts.map((post) => (
+                <Item post={post} />
+              ))}
+            </div>
+            <div class="pages-container">
+              {before && beforeCursor > 20 ? (
+                <a
+                  href={`${SITE_URL}before/${beforeCursor}`}
+                  title="Before"
+                  class="page"
+                >
+                  Before
+                </a>
+              ) : (
+                <span class="page-placeholder">&nbsp;</span>
+              )}
+
+              <div class="pages-info" />
+              {after && afterCursor ? (
+                <a
+                  href={`${SITE_URL}after/${afterCursor}`}
+                  title="After"
+                  class="page"
+                >
+                  After
+                </a>
+              ) : (
+                <span class="page-placeholder">&nbsp;</span>
+              )}
+            </div>
+          </>
         )
       }
     </ul>

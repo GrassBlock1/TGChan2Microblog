@@ -12,6 +12,7 @@ export async function GET(Astro) {
   url.pathname = SITE_URL
 
   const postsIndex = posts.map(item => ({
+    id: item.id,
     slug: `${url.toString()}posts/${item.id}`,
     title: item.title,
     description: item.description,
