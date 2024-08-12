@@ -5,7 +5,6 @@ import cloudflare from '@astrojs/cloudflare'
 import netlify from '@astrojs/netlify'
 import node from '@astrojs/node'
 import { provider } from 'std-env'
-import sentry from '@sentry/astro'
 
 const providers = {
   vercel: vercel({
@@ -28,24 +27,7 @@ const adapterProvider = process.env.SERVER_ADAPTER || provider
 export default defineConfig({
   output: 'hybrid',
   adapter: providers[adapterProvider] || providers.node,
-  integrations: [
-    ...process.env.SENTRY_DSN
-      ? [
-          sentry({
-            enabled: {
-              client: false,
-              server: process.env.SENTRY_DSN,
-            },
-            dsn: process.env.SENTRY_DSN,
-            sourceMapsUploadOptions: {
-              enabled: process.env.SENTRY_PROJECT && process.env.SENTRY_AUTH_TOKEN,
-              project: process.env.SENTRY_PROJECT,
-              authToken: process.env.SENTRY_AUTH_TOKEN,
-            },
-          }),
-        ]
-      : [],
-  ],
+  integrations: [],
   vite: {
     ssr: {
       external: [
