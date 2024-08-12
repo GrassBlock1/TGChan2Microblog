@@ -1,4 +1,4 @@
-# BroadcastChannel
+# TGChan2Microblog
 
 **Turn your Telegram Channel into a MicroBlog.**
 
@@ -13,30 +13,16 @@ English | [简体中文](./README.zh-cn.md)
 - **0 JS on the browser side**
 - **RSS and RSS JSON** `/rss.xml` `/rss.json`
 
+This fork provides:
+
+- Enhanced search experience (**Fuse.js** fuzzy search + Telegram native search, see FAQ)
+- Dark mode following system/browser settings
+
 ## 🪧 Demo
 
 ### Real users
 
-- [面条实验室](https://memo.miantiao.me/)
-- [Find Blog👁发现博客](https://broadcastchannel.pages.dev/)
-- [Memos 广场 🎪](https://now.memobbs.app/)
-- [APPDO 数字生活指南](https://mini.appdo.xyz/)
-- [85.60×53.98卡粉订阅/提醒](https://tg.docofcard.com/)
-- [新闻在花频道](https://tg.istore.app/)
-- [Charles Chin's Whisper](https://memo.eallion.com/)
-- [PlayStation 新闻转发](https://playstationnews.pages.dev)
-- [Yu's Life](https://daily.pseudoyu.com/)
-- [Leslie 和朋友们](https://tg.imlg.co/)
-- [OKHK 分享](https://tg.okhk.net/)
-- [gledos 的微型博客](https://microblogging.gledos.science)
-- [Steve Studio](https://tgc.surgeee.me/)
-- [LiFePO4:沙雕吐槽](https://lifepo4.top)
-- [Hotspot Hourly](https://hourly.top/)
-- [大河马中文财经新闻分享](https://a.xiaomi318.com/)
-- [\_My. Tricks 🎩 Collection](https://channel.mykeyvans.com)
-- [小报童专栏精选](https://xiaobaotong.genaiprism.site/)
-- [Fake news](https://fake-news.csgo.ovh/)
-- [miyi23's Geekhub资源分享](https://gh.miyi23.top/)
+- [m1cr0b10g@GB](https://gb-microblog.pages.dev/)
 
 ### Platform
 
@@ -110,9 +96,7 @@ STATIC_PROXY=
    - Turn off the "Restricting Saving Content" setting in the channel
    - Redeploy after modifying environment variables
    - Telegram blocks public display of some sensitive channels, you can verify by visiting `https://t.me/s/channelusername`.
-
-## ☕ Sponsor
-
-1. [Follow me on Telegram](https://t.me/miantiao_me)
-2. [Follow me on 𝕏](https://x.com/0xKaiBi)
-3. [Sponsor me on GitHub](https://github.com/sponsors/ccbikai)
+2. Why can't I search for some content?
+   > Because Telegram's channel public display page by default only loads one page (about a dozen) of content each time, so the Fuse.js search can only search the last dozen or so pieces of content for now, so it's a bit better than the original search, but not much.
+   >
+   > So in the end, I had to write a mechanism that would fall back to the crappy search mechanism of Telegram if the fuse.js couldn't find anything.

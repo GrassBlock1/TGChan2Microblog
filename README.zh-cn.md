@@ -1,4 +1,4 @@
-# 广播频道
+# TGChan2Microblog
 
 **将你的 Telegram Channel 转为微博客。**
 
@@ -13,30 +13,16 @@
 - **浏览器端 0 JS**
 - **提供 RSS 和 RSS JSON** `/rss.xml` `/rss.json`
 
+这个 fork 提供了：
+
+- 增强的搜索体验（**Fuse.js** 模糊搜索 + 原生搜索）（施工中，详见 FAQ）
+- 跟随系统/浏览器设置的暗黑模式
+
 ## 🪧 演示
 
 ### 真实用户
 
-- [面条实验室](https://memo.miantiao.me/)
-- [Find Blog👁发现博客](https://broadcastchannel.pages.dev/)
-- [Memos 广场 🎪](https://now.memobbs.app/)
-- [APPDO 数字生活指南](https://mini.appdo.xyz/)
-- [85.60×53.98卡粉订阅/提醒](https://tg.docofcard.com/)
-- [新闻在花频道](https://tg.istore.app/)
-- [Charles Chin's Whisper](https://memo.eallion.com/)
-- [PlayStation 新闻转发](https://playstationnews.pages.dev)
-- [Yu's Life](https://daily.pseudoyu.com/)
-- [Leslie 和朋友们](https://tg.imlg.co/)
-- [OKHK 分享](https://tg.okhk.net/)
-- [gledos 的微型博客](https://microblogging.gledos.science)
-- [Steve Studio](https://tgc.surgeee.me/)
-- [LiFePO4:沙雕吐槽](https://lifepo4.top)
-- [Hotspot Hourly](https://hourly.top/)
-- [大河马中文财经新闻分享](https://a.xiaomi318.com/)
-- [\_My. 技巧 🎩 集锦](https://channel.mykeyvans.com)
-- [小报童专栏精选](https://xiaobaotong.genaiprism.site/)
-- [Fake news](https://fake-news.csgo.ovh/)
-- [miyi23's Geekhub资源分享](https://gh.miyi23.top/)
+- [m1cr0b10g@GB](https://gb-microblog.pages.dev/)
 
 ### 平台
 
@@ -108,9 +94,9 @@ STATIC_PROXY=
    - 关闭频道 Restricting Saving Content 设置项
    - 修改完环境变量后需要重新部署
    - Telegram 会屏蔽一些敏感频道的公开展示， 可以通过访问 `https://t.me/s/频道用户名` 确认
-
-## ☕ 赞助
-
-1. [在 Telegram 关注我](https://t.me/miantiao_me)
-2. [在 𝕏 上关注我](https://x.com/ccbikai)
-3. [在 GitHub 赞助我](https://github.com/sponsors/ccbikai)
+2. 为什么我无法搜索到内容？
+   > 因为 Telegram 的频道公开展示页默认情况下是每次仅加载一页（大概十几条）内容，所以 Fuse.js 搜索目前暂时只能搜到最后十几条内容，所以说它比原版的搜索要好一点，但不多。
+   >
+   > 所以最后不得不写了一个搜不到东西回滚到 Telegram 那个不分词就会坏掉的破烂搜索机制。
+   >
+   > 虽然也尝试了直接递归获取所有内容，但是因为技术水平有限，最后还是放弃了。
