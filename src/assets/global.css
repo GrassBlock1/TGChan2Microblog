@@ -45,7 +45,7 @@ html {
 
 .search-form {
   display: none;
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--border-color);
   padding: 8px;
   position: sticky;
   top: 60px;
