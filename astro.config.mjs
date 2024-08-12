@@ -27,7 +27,6 @@ const adapterProvider = process.env.SERVER_ADAPTER || provider
 export default defineConfig({
   output: 'hybrid',
   adapter: providers[adapterProvider] || providers.node,
-  integrations: [],
   vite: {
     ssr: {
       external: [

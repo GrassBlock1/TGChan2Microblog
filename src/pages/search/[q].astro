@@ -1,12 +1,41 @@
 ---
-import List from '../../components/list.astro'
-import { getChannelInfo } from '../../lib/telegram'
+import Layout from '../../layouts/base.astro'
+import Fuse from 'fuse.js'
 
-const channel = await getChannelInfo(Astro, {
-  q: Astro.url.searchParams.get('q') || Astro.params.q,
+let q = Astro.url.searchParams.get('q') || ''
+
+const URL = Astro.url.origin
+
+const data = await fetch(`${URL}/search.json`).then((response) =>
+  response.json(),
+)
+
+const fuse = new Fuse(data, {
+  keys: ['title', 'slug', 'description', 'tag', 'content'],
+  includeScore: true,
 })
+
+let searchResults = fuse.search(q)
 
 export const prerender = false
 ---
 
-<List channel={channel} before={false} after={false} />
+<Layout id="main-container">
+  <h1>Search Results for "{q}"</h1>
+  <div class="items">
+    <ul>
+      {
+        searchResults.length > 0 ? (
+          searchResults.map((result) => (
+            <li>
+              <a href={`${result.item.slug}`}>{result.item.title}</a>
+              <br />
+            </li>
+          ))
+        ) : (
+          <p>No results found.</p>
+        )
+      }
+    </ul>
+  </div>
+</Layout>
