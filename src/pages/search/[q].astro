@@ -17,7 +17,7 @@ const fuse = new Fuse(data, {
 
 let searchResults = fuse.search(q)
 
-const cse_code = import.meta.env.CSE_CODE
+const cse_code = import.meta.env.GOOGLE_CSE_CODE
 
 const cse_script = `https://cse.google.com/cse.js?cx=${cse_code}`
 

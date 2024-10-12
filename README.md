@@ -10,12 +10,12 @@ English | [简体中文](./README.zh-cn.md)
 
 - **Turn your Telegram Channel into a MicroBlog**
 - **SEO friendly** `/sitemap.xml`
-- **0 JS on the browser side**
+  ~~- **0 JS on the browser side**~~(Telegram Search Sucks... so I have to use Google's search engine)
 - **RSS and RSS JSON** `/rss.xml` `/rss.json`
 
 This fork provides:
 
-- Enhanced search experience (**Fuse.js** fuzzy search + Telegram native search, see FAQ)
+- Enhanced search experience (**Fuse.js** fuzzy search + Google Programmable Search Engine, see FAQ)
 - Dark mode following system/browser settings
 
 ## 🪧 Demo
@@ -30,7 +30,7 @@ This fork provides:
 2. [Netlify](https://broadcast-channel.netlify.app/)
 3. [Vercel](https://broadcast-channel.vercel.app/)
 
-BroadcastChannel supports deployment on serverless platforms like Cloudflare, Netlify, Vercel that support Node.js SSR, or on a VPS.
+TGChan2Microblog supports deployment on serverless platforms like Cloudflare, Netlify, Vercel that support Node.js SSR, or on a VPS.
 For detailed tutorials, see [Deploy your Astro site](https://docs.astro.build/en/guides/deploy/).
 
 ## 🧱 Tech Stack
@@ -44,7 +44,7 @@ For detailed tutorials, see [Deploy your Astro site](https://docs.astro.build/en
 1. [Fork](https://github.com/ccbikai/BroadcastChannel/fork) this project to your GitHub
 2. Create a project on Cloudflare/Netlify/Vercel
 3. Select the `BroadcastChannel` project and the `Astro` framework
-4. Configure the environment variable `CHANNEL` with your channel name. This is the minimal configuration, for more configurations see the options below
+4. Configure the environment variable `CHANNEL` with your channel name and configure `GOOGLE_CSE_ID` with Google's Search Engine ID . This is the minimal configuration, for more configurations see the options below
 5. Save and deploy
 6. Bind a domain (optional).
 7. Update code, refer to the official GitHub documentation [Syncing a fork branch from the web UI](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-web-ui).
@@ -78,6 +78,9 @@ HEADER_INJECT=HEADER_INJECT
 NO_FOLLOW=false
 NO_INDEX=false
 
+## Google Programming Search Engine ID, can be used to search for content on the site, grab it from https://programmablesearchengine.google.com
+GOOGLE_CSE_ID=xxxx
+
 ## Sentry configuration options, collect server-side errors
 SENTRY_AUTH_TOKEN=SENTRY_AUTH_TOKEN
 SENTRY_DSN=SENTRY_DSN
@@ -99,4 +102,6 @@ STATIC_PROXY=
 2. Why can't I search for some content?
    > Because Telegram's channel public display page by default only loads one page (about a dozen) of content each time, so the Fuse.js search can only search the last dozen or so pieces of content for now, so it's a bit better than the original search, but not much.
    >
-   > So in the end, I had to write a mechanism that would fall back to the crappy search mechanism of Telegram if the fuse.js couldn't find anything.
+   > Although I also tried to directly recursively get all the content, but because of limited technical level, I finally gave up.
+   >
+   > In the past two days, I found a possible solution when looking at the issue, which is to use Google search to solve it. Then I found that "Programmable Search Engine" can be embedded in the website, so I changed it to this overnight, it simply works but you may need to submit the website to Google's index to achieve the best effect.
