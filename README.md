@@ -10,7 +10,7 @@ English | [简体中文](./README.zh-cn.md)
 
 - **Turn your Telegram Channel into a MicroBlog**
 - **SEO friendly** `/sitemap.xml`
-  ~~- **0 JS on the browser side**~~(Telegram Search Sucks... so I have to use Google's search engine)
+- ~~**0 JS on the browser side**~~(Telegram Search Sucks... so I have to use Google's search engine)
 - **RSS and RSS JSON** `/rss.xml` `/rss.json`
 
 This fork provides:
@@ -78,7 +78,7 @@ HEADER_INJECT=HEADER_INJECT
 NO_FOLLOW=false
 NO_INDEX=false
 
-## Google Programming Search Engine ID, can be used to search for content on the site, grab it from https://programmablesearchengine.google.com
+## Google Programming Search Engine Code, can be used to search for content on the site, grab it from https://programmablesearchengine.google.com and copy the code in 'cx' parameter
 GOOGLE_CSE_ID=xxxx
 
 ## Sentry configuration options, collect server-side errors

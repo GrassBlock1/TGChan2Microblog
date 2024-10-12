@@ -10,7 +10,7 @@
 
 - **将 Telegram Channel 转为微博客**
 - **SEO 友好** `/sitemap.xml`
-  ~~- **浏览器端 0 JS**~~（Telegram 搜索太烂了... 所以我不得不用 Google 的搜索引擎）
+- ~~**浏览器端 0 JS**~~（Telegram 搜索太烂了... 所以我不得不用 Google 的搜索引擎）
 - **提供 RSS 和 RSS JSON** `/rss.xml` `/rss.json`
 
 这个 fork 提供了：
@@ -76,7 +76,7 @@ HEADER_INJECT=HEADER_INJECT
 NO_FOLLOW=false
 NO_INDEX=false
 
-## Google Programming Search Engine 的搜索引擎 ID, 用来搜索内容,从 https://programmablesearchengine.google.com 获取即可。
+## Google Programming Search Engine 的搜索引擎 ID, 用来搜索内容,从 https://programmablesearchengine.google.com 获取代码中的 cx 参数的值即可。
 GOOGLE_CSE_ID=xxxx
 
 ## Sentry 配置项，收集服务端报错
