@@ -44,7 +44,7 @@ For detailed tutorials, see [Deploy your Astro site](https://docs.astro.build/en
 1. [Fork](https://github.com/ccbikai/BroadcastChannel/fork) this project to your GitHub
 2. Create a project on Cloudflare/Netlify/Vercel
 3. Select the `BroadcastChannel` project and the `Astro` framework
-4. Configure the environment variable `CHANNEL` with your channel name and configure `GOOGLE_CSE_ID` with Google's Search Engine ID . This is the minimal configuration, for more configurations see the options below
+4. Configure the environment variable `CHANNEL` with your channel name and configure `GOOGLE_CSE_CODE` with Google's Search Engine ID . This is the minimal configuration, for more configurations see the options below
 5. Save and deploy
 6. Bind a domain (optional).
 7. Update code, refer to the official GitHub documentation [Syncing a fork branch from the web UI](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-web-ui).
@@ -79,7 +79,7 @@ NO_FOLLOW=false
 NO_INDEX=false
 
 ## Google Programming Search Engine Code, can be used to search for content on the site, grab it from https://programmablesearchengine.google.com and copy the code in 'cx' parameter
-GOOGLE_CSE_ID=xxxx
+GOOGLE_CSE_CODE=xxxx
 
 ## Sentry configuration options, collect server-side errors
 SENTRY_AUTH_TOKEN=SENTRY_AUTH_TOKEN

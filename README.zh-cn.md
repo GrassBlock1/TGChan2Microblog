@@ -44,7 +44,7 @@ TGChan2Microblog 支持部署在 Cloudflare、Netlify、Vercel 等支持 Node.js
 1. [Fork](https://github.com/ccbikai/BroadcastChannel/fork) 此项目到你 GitHub
 2. 在 Cloudflare/Netlify/Vercel 创建项目
 3. 选择 `BroadcastChannel` 项目和 `Astro` 框架
-4. 配置环境变量 `CHANNEL` 为你的频道名称，然后在 https://programmablesearchengine.google.com 添加你的网站搜索引擎，并配置 `GOOGLE_CSE_ID` 为搜索引擎 ID。此为最小化配置，更多配置见下面的配置项
+4. 配置环境变量 `CHANNEL` 为你的频道名称，然后在 https://programmablesearchengine.google.com 添加你的网站搜索引擎，并配置 `GOOGLE_CSE_CODE` 为搜索引擎 ID。此为最小化配置，更多配置见下面的配置项
 5. 保存并部署
 6. 绑定域名（可选）。
 7. 更新代码，参考 GitHub 官方文档 [从 Web UI 同步分叉分支](https://docs.github.com/zh/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-web-ui)。
@@ -77,7 +77,7 @@ NO_FOLLOW=false
 NO_INDEX=false
 
 ## Google Programming Search Engine 的搜索引擎 ID, 用来搜索内容,从 https://programmablesearchengine.google.com 获取代码中的 cx 参数的值即可。
-GOOGLE_CSE_ID=xxxx
+GOOGLE_CSE_CODE=xxxx
 
 ## Sentry 配置项，收集服务端报错
 SENTRY_AUTH_TOKEN=SENTRY_AUTH_TOKEN
