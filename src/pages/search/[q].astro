@@ -1,14 +1,13 @@
 ---
 import Layout from '../../layouts/base.astro'
 import Fuse from 'fuse.js'
+import { getEnv } from '../../lib/env'
 
 let q = Astro.url.searchParams.get('q') || ''
 
 const URL = Astro.url.origin
 
-const data = await fetch(`${URL}/search.json`).then((response) =>
-  response.json(),
-)
+const data = await fetch(`${URL}/search.json`).then((response) => response.json())
 
 const fuse = new Fuse(data, {
   keys: ['title', 'slug', 'description', 'tag', 'content'],
@@ -17,7 +16,7 @@ const fuse = new Fuse(data, {
 
 let searchResults = fuse.search(q)
 
-const cse_code = import.meta.env.GOOGLE_CSE_CODE
+const cse_code = getEnv(import.meta.env, Astro, 'GOOGLE_CSE_CODE')
 
 const cse_script = `https://cse.google.com/cse.js?cx=${cse_code}`
 
