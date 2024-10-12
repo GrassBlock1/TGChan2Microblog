@@ -37,7 +37,9 @@ const seoParams = {
     },
   },
   extend: {
-    link: [{ rel: 'icon', href: '/favicon.svg' }],
+    link: [
+      { rel: 'icon', href: channel?.avatar ? channel?.avatar : '/favicon.svg' },
+    ],
   },
 }
 

@@ -29,6 +29,7 @@ export default defineConfig({
   adapter: providers[adapterProvider] || providers.node,
   vite: {
     ssr: {
+      noExternal: process.env.DOCKER ? !!process.env.DOCKER : undefined,
       external: [
         ...adapterProvider === 'cloudflare_pages'
           ? [

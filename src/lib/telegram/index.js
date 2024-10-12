@@ -93,16 +93,16 @@ function getReply($, item, { channel }) {
   const href = reply?.attr('href')
   if (href) {
     const url = new URL(href)
-    reply?.attr('href', `${url.pathname}`.replace(channel, 'posts'))
+    reply?.attr('href', `${url.pathname}`.replace(new RegExp(`/${channel}/`, 'i'), '/posts/'))
   }
 
   return $.html(reply)
 }
 
 function modifyHTMLContent($, content, { index } = {}) {
-  $(content).find('.emoji')?.attr('style', '')
+  $(content).find('.emoji')?.removeAttr('style')
   $(content).find('a')?.each((_index, a) => {
-    $(a)?.attr('title', $(a)?.text())?.attr('onclick', '')
+    $(a)?.attr('title', $(a)?.text())?.removeAttr('onclick')
   })
   $(content).find('tg-spoiler')?.each((_index, spoiler) => {
     const id = `spoiler-${index}-${_index}`
@@ -112,8 +112,10 @@ function modifyHTMLContent($, content, { index } = {}) {
   })
   $(content).find('pre').each((_index, pre) => {
     try {
+      $(pre).find('br')?.replaceWith('\n')
+
       const code = $(pre).text()
-      const language = flourite(code, { shiki: true })?.language
+      const language = flourite(code, { shiki: true, noUnknown: true })?.language || 'text'
       const highlightedCode = prism.highlight(code, prism.languages[language], language)
       $(pre).html(`<code class="language-${language}">${highlightedCode}</code>`)
     }
@@ -130,7 +132,7 @@ function getPost($, item, { channel, staticProxy, index = 0 }) {
     ? modifyHTMLContent($, $(item).find('.tgme_widget_message_text.js-message_text'), { index })
     : modifyHTMLContent($, $(item).find('.tgme_widget_message_text'), { index })
   const title = content?.text()?.match(/^.*?(?=[。：:]|http\S)/g)?.[0] ?? content?.text() ?? ''
-  const id = $(item).attr('data-post')?.replace(`${channel}/`, '')
+  const id = $(item).attr('data-post')?.replace(new RegExp(`${channel}/`, 'i'), '')
 
   const tags = $(content).find('a[href^="?q="]')?.each((_index, a) => {
     $(a)?.attr('href', `/search/${encodeURIComponent($(a)?.text())}`)
@@ -181,7 +183,7 @@ export async function getChannelInfo(Astro, { before = '', after = '', q = '', t
   }
 
   // Where t.me can also be telegram.me, telegram.dog
-  const host = getEnv(import.meta.env, Astro, 'HOST') ?? 't.me'
+  const host = getEnv(import.meta.env, Astro, 'TELEGRAM_HOST') ?? 't.me'
   const channel = getEnv(import.meta.env, Astro, 'CHANNEL')
   const staticProxy = getEnv(import.meta.env, Astro, 'STATIC_PROXY') ?? '/static/'
 
