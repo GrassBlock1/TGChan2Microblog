@@ -38,6 +38,7 @@ export default defineConfig({
               'events',
               'worker_threads',
               'async_hooks',
+              'util',
               'node:diagnostics_channel',
               'node:net',
               'node:tls',
