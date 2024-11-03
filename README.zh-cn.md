@@ -43,12 +43,14 @@ TGChan2Microblog 支持部署在 Cloudflare、Netlify、Vercel 等支持 Node.js
 
 ### Docker
 
-1. `docker pull ghcr.io/ccbikai/broadcastchannel:main`
-2. `docker run -d --name broadcastchannel -p 4321:4321 -e CHANNEL=miantiao_me ghcr.io/ccbikai/broadcastchannel:main`
+1. `docker pull ghcr.io/grassblock1/tgchan2microblog:main`
+2. `docker run -d --name tgchan2microblog -p 4321:4321 -e CHANNEL=username ghcr.io/grassblock1/tgchan2microblog:main`
+
+podman 用户可以使用 `podman` 替换 `docker`。
 
 ### Serverless
 
-1. [Fork](https://github.com/ccbikai/BroadcastChannel/fork) 此项目到你 GitHub
+1. [Fork](https://github.com/GrassBlock1/TGChan2Microblog/fork) 此项目到你 GitHub
 2. 在 Cloudflare/Netlify/Vercel 创建项目
 3. 选择 `BroadcastChannel` 项目和 `Astro` 框架
 4. 配置环境变量 `CHANNEL` 为你的频道名称。此为最小化配置，更多配置见下面的配置项

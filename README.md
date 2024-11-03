@@ -43,12 +43,14 @@ For detailed tutorials, see [Deploy your Astro site](https://docs.astro.build/en
 
 ### Docker
 
-1. `docker pull ghcr.io/ccbikai/broadcastchannel:main`
-2. `docker run -d --name broadcastchannel -p 4321:4321 -e CHANNEL=miantiao_me ghcr.io/ccbikai/broadcastchannel:main`
+1. `docker pull ghcr.io/grassblock1/tgchan2microblog:main`
+2. `docker run -d --name tgchan2microblog -p 4321:4321 -e CHANNEL=username ghcr.io/grassblock1/tgchan2microblog:main`
+
+podman users can simply replace `docker` with `podman`.
 
 ### Serverless
 
-1. [Fork](https://github.com/ccbikai/BroadcastChannel/fork) this project to your GitHub
+1. [Fork](https://github.com/GrassBlock1/TGChan2Microblog/fork) this project to your GitHub
 2. Create a project on Cloudflare/Netlify/Vercel
 3. Select the `BroadcastChannel` project and the `Astro` framework
 4. Configure the environment variable `CHANNEL` with your channel name. This is the minimal configuration, for more configurations see the options below
