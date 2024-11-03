@@ -41,10 +41,17 @@ For detailed tutorials, see [Deploy your Astro site](https://docs.astro.build/en
 
 ## 🏗️ Deployment
 
+### Docker
+
+1. `docker pull ghcr.io/ccbikai/broadcastchannel:main`
+2. `docker run -d --name broadcastchannel -p 4321:4321 -e CHANNEL=miantiao_me ghcr.io/ccbikai/broadcastchannel:main`
+
+### Serverless
+
 1. [Fork](https://github.com/ccbikai/BroadcastChannel/fork) this project to your GitHub
 2. Create a project on Cloudflare/Netlify/Vercel
 3. Select the `BroadcastChannel` project and the `Astro` framework
-4. Configure the environment variable `CHANNEL` with your channel name and configure `GOOGLE_CSE_CODE` with Google's Search Engine ID . This is the minimal configuration, for more configurations see the options below
+4. Configure the environment variable `CHANNEL` with your channel name. This is the minimal configuration, for more configurations see the options below
 5. Save and deploy
 6. Bind a domain (optional).
 7. Update code, refer to the official GitHub documentation [Syncing a fork branch from the web UI](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork#syncing-a-fork-branch-from-the-web-ui).
